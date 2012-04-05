@@ -1,0 +1,25 @@
+<h1>Survey Index</h1>
+
+<p>
+  <b>Name</b><br>
+  <%= @survey.name %>
+</p>
+
+<ol>
+	<% for question in @survey.questions %>
+		<li>
+		  <%= question.content %>
+			<ul>
+				<% for answer in question.answers %>
+				<li><%= answer.content %></li>
+				<% end %>
+			</ul>	
+		</li>
+	<% end %>
+</ol>
+
+<div class="form-actions">
+  <%= link_to 'Back', surveys_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_survey_path(@survey), :class => 'btn' %>
+  <%= link_to 'Delete', survey_path(@survey), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

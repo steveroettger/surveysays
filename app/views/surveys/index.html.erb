@@ -1,0 +1,26 @@
+<h1>Surveys</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @surveys.each do |survey| %>
+      <tr>
+        <td><%= survey.id %></td>
+        <td><%= link_to survey.name, survey_path(survey) %></td>
+        <td><%= survey.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_survey_path(survey), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', survey_path(survey), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_survey_path, :class => 'btn btn-primary' %>
